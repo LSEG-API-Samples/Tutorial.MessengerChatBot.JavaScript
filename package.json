@@ -1,0 +1,11 @@
+{
+  "name": "messenger_bot_api_tutorial",
+  "version": "1.0.0",
+  "description": "A tutorial example for Eikon Messenger Bot API",
+  "main": "simple_chatbot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dino Diviacchi (Dino.Diviacchi@thomsonreuters.com)",
+  "license": "ISC"
+}
