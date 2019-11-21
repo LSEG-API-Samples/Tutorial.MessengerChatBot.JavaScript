@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Dino Diviacchi (Dino.Diviacchi@thomsonreuters.com)",
+  "author": "Dino Diviacchi (Dino.Diviacchi@refinitiv.com)",
   "license": "ISC",
   "dependencies": {
     "request": "^2.88.0",

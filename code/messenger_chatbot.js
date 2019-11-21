@@ -12,6 +12,7 @@ var MessengerAPI = function (url, appid, wsURL) {
     this.wsClient = new WebSocketClient();
     this.authRefreshInterval = 1000 * 60;
     this.wsURL = wsURL;
+
 };
 
 //Create Authentication Function
@@ -169,6 +170,9 @@ MessengerAPI.prototype.StartWS = async function () {
                 bar = message.utf8Data;
             }
 
+            //debug by wasin w. 
+            console.log(`this.chatroomId = ${this.chatroomId}`);
+            console.log(`chatroomId = ${chatroomId}`);
             o = JSON.parse(message.utf8Data);
             msg = JSON.parse(message.utf8Data);
 
@@ -176,19 +180,19 @@ MessengerAPI.prototype.StartWS = async function () {
                 text = msg.post.message;
                 if (text == "/help") {
                     console.log("Got here");
-                    await api.PostToChatroom("groupchat-d2254f174e97b335571179db1e4a4437", "What would you like help with?\n ")
+                    await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
                 }
                 if (text == "C1") {
                     console.log("C1");
-                    await api.PostToChatroom("groupchat-d2254f174e97b335571179db1e4a4437", "What would you like help with?\n ")
+                    await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
                 }
                 if (text == "C2") {
                     console.log("C2");
-                    await api.PostToChatroom("groupchat-d2254f174e97b335571179db1e4a4437", "What would you like help with?\n ")
+                    await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
                 }
                 if (text == "C3") {
                     console.log("C3");
-                    await api.PostToChatroom("groupchat-d2254f174e97b335571179db1e4a4437", "What would you like help with?\n ")
+                    await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
                 }
             }
         });
@@ -221,21 +225,22 @@ var main = async function (api, username, password, wsURL) {
     console.log(roomsRsp);
     console.log("Join Rooms ");
 
-    //Change below to an input from the get chatrooms id
-    var chatroomId = "groupchat-d2254f174e97b335571179db1e4a4437";
+
     var val = await api.JoinChatroom(chatroomId);
 
 }
 
 //Assign variables for pre-production & production.
 var GWURL = "https://api.refinitiv.com";
-var GWULRAUTH = "https://api.refinitiv.com/auth/oauth2/beta1/token";
+var GWULRAUTH = "https://api.refinitiv.com/auth/oauth2/v1/token";
 var APPKey = "";
 var username = "";
 var password = "";
+//Change below to an input from the get chatrooms id
+const chatroomId = "groupchat-d2254f174e97b335571179db1e4a4437";
 
 //Please verify below URL is correct via the WS lookup
-var WSURL = "wss://api.collab.refinitiv.com/services/nt/api/messenger/v1/stream";
+const WSURL = "wss://api.collab.refinitiv.com/services/nt/api/messenger/v1/stream";
 var api = new MessengerAPI(GWURL, APPKey, WSURL);
 
 
