@@ -1,11 +1,23 @@
 # Messenger Bot API Tutorial
+- Last update: November 2019
+- Environment: Windows
+- Compiler: Node.js
+- Prerequisite: [Access to Eikon Messenger](#prerequisite)
+
+## Introduction
 
 [Eikon Messenger](https://www.refinitiv.com/en/products/eikon-trading-software/eikon-messenger-securemessaging) is a free to use, compliant and secure messagin open messaging platform.  The platform allows users ineterate into the Eikon Desktop and share messages, data, files, charts, screenshots, and emoticons with your contacts on via desktop, mobile and web access.
 
-The [Messenger Bot API page](https://developers.refinitiv.com/messenger-api) provides a set of available API calls to build automated workflows or bots for Eikon Messenger. The Bot API allows your applications to connect with and pass information
-into Eikon’s Messenger service programmatically.
+The [Messenger Bot API page](https://developers.refinitiv.com/messenger-api) provides a set of available API calls to build automated workflows or bots for Eikon Messenger. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically.
 
-## Prerequisite
+## Table of contents
+* [Prerequisite](#prerequisite)
+* [Getting the AppKey value](#appkey)
+* [Running the Tutorial](#running)
+* [Authors](#author)
+* [References](#references)
+
+## <a id="prerequisite"></a>Prerequisite 
 This tutorial source code requires the following dependencies.
 1. [Eikon Messenger](https://www.refinitiv.com/en/products/eikon-trading-software/eikon-messenger-securemessaging).
 2. [Node.js](https://nodejs.org/en/) runtime.
@@ -14,7 +26,7 @@ This tutorial source code requires the following dependencies.
 
 Please contact your Refinitiv's representative to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 
-## Getting the AppKey value
+## <a id="appkey"></a>Getting the AppKey value
 
 Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
 
@@ -27,7 +39,7 @@ You can generate your AppKey via the following steps:
 
 You will then see a row for your new app with an App Key item, which is your client_id for the EDP Authentication. 
 
-## Running the Tutorial
+## <a id="running"></a>Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
 2. Run ```$> npm install``` command in the command prompt to install all the dependencies required to run the sample in a subdirectory called *node_modules/*.
 3. If the machine is behind a proxy server, you need to configure Node.js uses proxy instead of a direct HTTP connection via the following command in command prompt: 
@@ -77,7 +89,7 @@ You will then see a row for your new app with an App Key item, which is your cli
     Received: {"reqId":"327344.6792","event":"connected"}
     ```
 
-## Authors
+## <a id="author"></a>Authors
 - Dino Diviacchi (dino.diviacchi@refinitiv.com)
 
 ## <a id="references"></a>References
@@ -86,4 +98,3 @@ For further details, please check out the following resources:
 * [Refinitiv Messenger Bot API: Quick Start](https://developers.refinitiv.com/messenger-api/messenger-bot-api/quick-start). 
 * [Refinitiv Messenger Bot API: Documentation page](https://developers.refinitiv.com/messenger-api/messenger-bot-api/docs).
 * [Node.js Documentation page](https://nodejs.org/dist/latest-v12.x/docs/api/).
-
