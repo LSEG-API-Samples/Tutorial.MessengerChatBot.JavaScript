@@ -14,6 +14,19 @@ This tutorial source code requires the following dependencies.
 
 Please contact your Refinitiv's representative to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 
+## Getting the AppKey value
+
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
+
+![Figure-1](images/app_key_generator.png "AppKey Generator Tool") 
+
+You can generate your AppKey via the following steps:
+1. Enter an App Display Name
+2. Select the tick box next to EDP API as the API Type
+3. Click ‘Register’ New App button
+
+You will then see a row for your new app with an App Key item, which is your client_id for the EDP Authentication. 
+
 ## Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
 2. Run ```$> npm install``` command in the command prompt to install all the dependencies required to run the sample in a subdirectory called *node_modules/*.
@@ -21,12 +34,51 @@ Please contact your Refinitiv's representative to help you to access Eikon Messa
     ```
     set https_proxy=http://<proxy.server>:<port>
     ```
-4. Please follow the Messenger Bot API Tutorials page.
+4. Login to your personal Eikon Messenger to add the bot to your contacts, using “Add a New Contact” from the menu in the lower left corner.
+
+    ![Figure-2](images/eikon_msg_addbot1.png "Add a New Contact") 
+
+5. Add bot name **bot_agent.mybot@refinitiv.com**.
+
+    ![Figure-3](images/eikon_msg_addbot2.png "Add Bot account") 
+
+6. Once you have add the bot it will show up under your contacts (on the left side).
+
+    ![Figure-4](images/eikon_msg_addbot3.png "Your Bot Account") 
+
+7. Create a chatroom using "Create a Bilateral chatroom" button from the menu in the lower left corner.
+
+    ![Figure-5](images/eikon_msg_addbot4.png "Create a chatroom") 
+
+8. Add your Bot to a chatroom by dragging it into your newly created chatroom. 
+
+    ![Figure-6](images/eikon_msg_addbot5.png "Bot Chatroom") 
+
+9. You will then be able to send messages to chatrooms using the API calls
+10. Open tutorial application source code with your editor and input the following parameters
+    - ```APPKey```: Your AppKey
+    - ```bot_username```: Your Bot username
+    - ```bot_password```: Your Bot password
+11. Open a command prompt and run the tutorial application with the following command.
+    ```
+    $>node tutorial_chatbot.js
+    ```
+12. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+    ```
+    $>node tutorial_chatbot.js
+    Get Token
+    Get Rooms
+    { chatrooms:
+        [ { chatroomId: 'groupchat-dXXXXXXX',
+            name: 'Wasin_AHS_BOT',
+            createdTime: '2019-11-21T07:11:24Z' } ] }
+    Join Rooms
+    WebSocket Client Connected
+    Received: {"reqId":"327344.6792","event":"connected"}
+    ```
 
 ## Authors
-
-- Dino Diviacchi
-
+- Dino Diviacchi (dino.diviacchi@refinitiv.com)
 
 ## <a id="references"></a>References
 For further details, please check out the following resources:

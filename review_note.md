@@ -5,6 +5,9 @@
 4. Change console.log code from console.log("message" + data); to template string console.log(`message ${data}`);
 5. Add README.md file
 6. moved 'chatroomId' to be global and constant variable. Every code that access the chat room id are now accessing via chatroomId variable instead.
-
-## Todo next
-1. Revise that username and password assign code.
+7. Move apiBasePath variable to be global constant
+8. change username and password parameters to bot_username and bot_password for easy understand.
+9. Dynamic get Chatroom id instead of let the clients hard code it.
+10. Add error handles
+11. Revise that username and password assign code.
+12. Update README.md file
