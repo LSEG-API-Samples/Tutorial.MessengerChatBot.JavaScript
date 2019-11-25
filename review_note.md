@@ -11,3 +11,4 @@
 10. Add error handles
 11. Revise that username and password assign code.
 12. Update README.md file
+13. Change tutorial application source code name from simple_chatbot.js to src/tutorial_chatbot.js (and add new folder)
