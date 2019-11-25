@@ -36,7 +36,7 @@ You will then see a row for your new app with an App Key item, which is your cli
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-6. Open a command prompt and run the tutorial application with the following command.
+6. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node tutorial_chatbot.js
     ```
