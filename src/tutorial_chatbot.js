@@ -1,6 +1,15 @@
+//|-----------------------------------------------------------------------------
+//|            This source code is provided under the Apache 2.0 license      --
+//|  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
+//|                See the project's LICENSE.md for details.                  --
+//|              Copyright Refinitiv 2019. All rights reserved.               --
+//|-----------------------------------------------------------------------------
+
 const request = require("request-promise");
 var WebSocketClient = require("websocket").client;
 const Timeout = ms => new Promise(res => setTimeout(res, ms));
+
+// Global Default Variables
 var text = "";
 
 //Assign variables for pre-production & production.
