@@ -1,14 +1,14 @@
 # Messenger Bot API Tutorial
 
-Eikon Messenger is a free to use, compliant and secure messagin open messaging platform.  The platform allows users ineterate into the Eikon Desktop and share messages, data, files, charts, screenshots, and emoticons with your contacts on via desktop, mobile and web access.
+Eikon Messenger is a free to use, compliant and secure messaging platform.  It is a powerful communication tool that provides desktop, mobile, and web access, and allows sharing messages, data, files, screenshots, and emoticons with your contacts.
 
-The Messenger Bot API page provides a set of available API calls to build automated workflows or bots for Eikon Messenger. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically.
+The Messenger Bot API provides a set of available API calls to build automated workflows or bots for Eikon Messenger. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically or interact with a bot via a WebSocket connection.
 
 ## Prerequisite
 This tutorial source code requires the following dependencies.
 1. Eikon Messenger(https://www.refinitiv.com/en/products/eikon-trading-software/eikon-messenger-securemessaging).
 2. Node.js (https://nodejs.org/en/) runtime.
-3. npm (https://www.npmjs.com/) package manager (included in Node.js)
+3. npm (https://www.npmjs.com/) package manager (included in Node.js).
 4. Eikon Messenger Bot API access and license.
 
 Please contact your Refinitiv's representative to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.

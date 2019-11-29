@@ -1,6 +1,15 @@
+//|-----------------------------------------------------------------------------
+//|            This source code is provided under the Apache 2.0 license      --
+//|  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
+//|                See the project's LICENSE.md for details.                  --
+//|              Copyright Refinitiv 2019. All rights reserved.               --
+//|-----------------------------------------------------------------------------
+
 const request = require("request-promise");
 var WebSocketClient = require("websocket").client;
 const Timeout = ms => new Promise(res => setTimeout(res, ms));
+
+// Global Default Variables
 var text = "";
 
 //Assign variables for pre-production & production.
@@ -8,11 +17,12 @@ const GWURL = "https://api.refinitiv.com";
 const apiBasePath = "/messenger/beta1";
 const content_type = "application/json";
 
-const APPKey = "";
-//Bot Username
-const bot_username = "";
-//Bot Password
-const bot_password = "";
+//Input your Messenger account AppKey.
+const APPKey = "XXXXXXXX";
+//Input your Bot Username
+const bot_username = "XXXXXXXX";
+//Input Bot Password
+const bot_password = "XXXXXXXX";
 var chatroomId = "";
 
 //Please verify below URL is correct via the WS lookup
@@ -28,6 +38,11 @@ var MessengerAPI = function (url, appid, wsURL) {
     this.wsClient = new WebSocketClient();
     this.authRefreshInterval = 1000 * 60;
     this.wsURL = wsURL;
+
+    this.test = function (username, password) {
+        console.log(username);
+        console.log(password);
+    }
 };
 
 //Send authentication request message to EDP Authentication Gateway
@@ -289,7 +304,7 @@ MessengerAPI.prototype.StartWS = async function () {
 var main = async function (api, username, password, wsURL) {
     console.log("Get Token ");
     let rsp = await api.Authenticate(username, password);
-
+    console.log("Successfully Authenticated ");
     console.log("Get Rooms ");
     let roomsRsp = await api.GetChatrooms();
     console.log(roomsRsp);
@@ -303,4 +318,6 @@ var main = async function (api, username, password, wsURL) {
 };
 
 var api = new MessengerAPI(GWURL, APPKey, WSURL);
+
+//Running the tutorial 
 main(api, bot_username, bot_password).catch(rsp => console.log(rsp));
