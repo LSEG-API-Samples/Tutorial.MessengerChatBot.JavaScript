@@ -2,6 +2,7 @@
 - Last update: November 2019
 - Environment: Windows
 - Compiler: Node.js
+- Author: Dino Diviacchi (dino.diviacchi@refinitiv.com)
 - Prerequisite: [Access to Eikon Messenger](#prerequisite)
 
 ## Introduction
@@ -28,7 +29,7 @@ Please contact your Refinitiv's representative or Dino Diviacchi (dino.diviacchi
 
 ## <a id="appkey"></a>Getting the AppKey value
 
-Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
 
 ![Figure-1](images/app_key_generator.png "AppKey Generator Tool") 
 
@@ -37,7 +38,7 @@ You can generate your AppKey via the following steps:
 2. Select the tick box next to EDP API as the API Type
 3. Click ‘Register’ New App button
 
-You will then see a row for your new app with an App Key item, which is your client_id for the EDP Authentication. 
+You will then see a row for your new app with an AppKey item, which is your client_id for the EDP Authentication. 
 
 ## <a id="running"></a>Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
@@ -94,7 +95,7 @@ You will then see a row for your new app with an App Key item, which is your cli
 
 ## <a id="references"></a>References
 For further details, please check out the following resources:
-* [Refinitiv Messenger Bot API page](https://developers.refinitiv.com/messenger-api) on the [Refinitiv Developer Community](https://developers.thomsonreuters.com/) web site.
+* [Refinitiv Messenger Bot API page](https://developers.refinitiv.com/messenger-api) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
 * [Refinitiv Messenger Bot API: Quick Start](https://developers.refinitiv.com/messenger-api/messenger-bot-api/quick-start). 
 * [Refinitiv Messenger Bot API: Documentation page](https://developers.refinitiv.com/messenger-api/messenger-bot-api/docs).
 * [Node.js Documentation page](https://nodejs.org/dist/latest-v12.x/docs/api/).
