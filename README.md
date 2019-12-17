@@ -24,7 +24,7 @@ This tutorial source code requires the following dependencies.
 3. [npm](https://www.npmjs.com/) package manager (included in Node.js).
 4. Eikon Messenger Bot API access and license.
 
-Please contact your Refinitiv's representative to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
+Please contact your Refinitiv's representative or Dino Diviacchi (dino.diviacchi@refinitiv.com) to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 
 ## <a id="appkey"></a>Getting the AppKey value
 
