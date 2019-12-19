@@ -11,8 +11,7 @@ This tutorial source code requires the following dependencies.
 3. npm (https://www.npmjs.com/) package manager (included in Node.js).
 4. Eikon Messenger Bot API access and license.
 
-Please contact your Refinitiv's representative to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
-
+Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacchi@refinitiv.com) to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 ## Getting the AppKey value
 
 Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator web site (Please access with your Eikon account, not your bot account). 
@@ -59,8 +58,7 @@ You will then see a row for your new app with an App Key item, which is your cli
 
 ## References
 For further details, please check out the following resources:
-* Refinitiv Messenger Bot API page (https://developers.refinitiv.com/messenger-api) on the Refinitiv Developer Community (https://developers.thomsonreuters.com/) web site.
+* Refinitiv Messenger Bot API page (https://developers.refinitiv.com/messenger-api) on the Refinitiv Developer Community (https://developers.refinitiv.com/) web site.
 * Refinitiv Messenger Bot API: Quick Start (https://developers.refinitiv.com/messenger-api/messenger-bot-api/quick-start). 
 *  Refinitiv Messenger Bot API: Documentation page (https://developers.refinitiv.com/messenger-api/messenger-bot-api/docs).
 *  Node.js Documentation page (https://nodejs.org/dist/latest-v12.x/docs/api/).
-
