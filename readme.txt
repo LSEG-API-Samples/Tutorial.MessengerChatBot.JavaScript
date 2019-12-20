@@ -14,14 +14,14 @@ This tutorial source code requires the following dependencies.
 Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacchi@refinitiv.com) to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 ## Getting the AppKey value
 
-Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator web site (Please access with your Eikon account, not your bot account). 
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the App Key Generator) or via a https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator web site (Please access with your Eikon account, not your bot account). 
 
 You can generate your AppKey via the following steps:
 1. Enter an App Display Name
 2. Select the tick box next to EDP API as the API Type
 3. Click ‘Register’ New App button
 
-You will then see a row for your new app with an App Key item, which is your client_id for the EDP Authentication. 
+You will then see a row for your new app with an AppKey item, which is your client_id for the Refinitiv Data Platform (RDP) Authentication. 
 
 ## Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
@@ -46,7 +46,7 @@ You will then see a row for your new app with an App Key item, which is your cli
     Get Rooms
     { chatrooms:
         [ { chatroomId: 'groupchat-dXXXXXXX',
-            name: 'Wasin_AHS_BOT',
+            name: 'CHATROOM_NAME',
             createdTime: '2019-11-21T07:11:24Z' } ] }
     Join Rooms
     WebSocket Client Connected

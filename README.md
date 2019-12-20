@@ -29,7 +29,7 @@ Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacch
 
 ## <a id="appkey"></a>Getting the AppKey value
 
-Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
 
 ![Figure-1](images/app_key_generator.png "AppKey Generator Tool") 
 
@@ -38,7 +38,7 @@ You can generate your AppKey via the following steps:
 2. Select the tick box next to EDP API as the API Type
 3. Click ‘Register’ New App button
 
-You will then see a row for your new app with an AppKey item, which is your client_id for the EDP Authentication. 
+You will then see a row for your new app with an AppKey item, which is your client_id for the Refinitiv Data Platform (RDP) Authentication. 
 
 ## <a id="running"></a>Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
@@ -83,7 +83,7 @@ You will then see a row for your new app with an AppKey item, which is your clie
     Get Rooms
     { chatrooms:
         [ { chatroomId: 'groupchat-dXXXXXXX',
-            name: 'Wasin_AHS_BOT',
+            name: 'CHATROOM_NAME',
             createdTime: '2019-11-21T07:11:24Z' } ] }
     Join Rooms
     WebSocket Client Connected
