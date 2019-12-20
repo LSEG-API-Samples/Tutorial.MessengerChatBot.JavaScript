@@ -16,6 +16,7 @@ var text = "";
 const GWURL = "https://api.refinitiv.com";
 const apiBasePath = "/messenger/beta1";
 const content_type = "application/json";
+const RDPAuthenURL = "/auth/oauth2/v1/token";
 
 //Input your Messenger account AppKey.
 const APPKey = "XXXXXXXX";
@@ -45,12 +46,12 @@ var MessengerAPI = function (url, appid, wsURL) {
     }
 };
 
-//Send authentication request message to EDP Authentication Gateway
+//Send authentication request message to Refinitiv Data Platform (RDP) Authentication Gateway
 MessengerAPI.prototype.Authenticate = async function (username, password) {
 
     let rsp = await this.client({
         method: "POST",
-        url: GWURL + "/auth/oauth2/v1/token",
+        url: GWURL + RDPAuthenURL,
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/x-www-form-urlencoded",
@@ -74,7 +75,7 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
 
         this.access_token = jRsp.access_token;
         this.refresh_token = jRsp.refresh_token;
-        this.authRefreshInterval = (parseInt(jRsp.expires_in) - 30) * 1000; //Set up time to refreshed based on EDP expire_in value
+        this.authRefreshInterval = (parseInt(jRsp.expires_in) - 30) * 1000; //Set up time to refreshed based on RDP expire_in value
         this.username = username;
         this.password = password;
         return this.access_token; // Return Access Token (STS_TOKEN)
