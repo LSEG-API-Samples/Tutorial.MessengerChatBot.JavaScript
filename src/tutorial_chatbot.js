@@ -85,7 +85,7 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
     }
 };
 
-//Create Send Message Function
+//Send Message to a Chatroom via HTTP REST
 MessengerAPI.prototype.SendMessage = async function (recipientEmail, message) {
     let rsp = await this.client({
         method: "POST",
@@ -113,7 +113,7 @@ MessengerAPI.prototype.SendMessage = async function (recipientEmail, message) {
 
 };
 
-//Create Get List of Chatrooms Function
+//Get List of Chatrooms Function via HTTP REST
 MessengerAPI.prototype.GetChatrooms = async function () {
     let rsp = await this.client({
         method: "GET",
@@ -136,7 +136,7 @@ MessengerAPI.prototype.GetChatrooms = async function () {
 
 };
 
-//Posting Messages to a Chatroom
+//Posting Messages to a Chatroom via HTTP REST
 MessengerAPI.prototype.PostToChatroom = async function (roomId, message) {
 
     let rsp = await this.client({
@@ -162,7 +162,7 @@ MessengerAPI.prototype.PostToChatroom = async function (roomId, message) {
     }
 };
 
-//Joining a Bot to a Chatroom
+//Joining a Bot to a Chatroom via HTTP REST
 MessengerAPI.prototype.JoinChatroom = async function (roomId) {
     let rsp = await this.client({
         method: "POST",
