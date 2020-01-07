@@ -62,7 +62,7 @@ var MessengerAPI = function (url, appid, wsURL) {
 MessengerAPI.prototype.Authenticate = async function (username, password) {
 
     let authen_request_msg = {};
-    if (this.refresh_token === '') {
+    if (this.refresh_token === '') { //First RDP Authentication; use username, password and client_id
         authen_request_msg = {
             grant_type: "password",
             scope: "trapi.messenger",
@@ -72,14 +72,17 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
             takeExclusiveSignOnControl: "true"
         }
     } else {
-        authen_request_msg = {
+        authen_request_msg = { //Later RDP Authentication; use refresh_token
             grant_type: "refresh_token",
             username: username,
             refresh_token: this.refresh_token
         }
     }
+
     // Print RDP authentication request message for debugging purpose
     logger.debug(`Send POST:  ${JSON.stringify(authen_request_msg)} to ${GWURL + RDPAuthenURL}`);
+
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "POST",
         url: GWURL + RDPAuthenURL,
@@ -119,6 +122,7 @@ MessengerAPI.prototype.SendOnetoOneMessage = async function (recipientEmail, mes
         message: message
     })} to ${GWURL + apiBasePath + "/message"}`);
 
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/message",
@@ -151,6 +155,7 @@ MessengerAPI.prototype.GetChatrooms = async function () {
     // Print for debugging purpose
     logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms"}`);
 
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "GET",
         url: GWURL + apiBasePath + "/chatrooms",
@@ -178,6 +183,7 @@ MessengerAPI.prototype.PostToChatroom = async function (roomId, message) {
     // Print HTTP request message for debugging purpose
     logger.debug(`Send POST: ${JSON.stringify({message: message})} to ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/post"}`);
 
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/post",
@@ -207,6 +213,7 @@ MessengerAPI.prototype.JoinChatroom = async function (roomId) {
     // Print for debugging purpose
     logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/join"}`);
 
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/join",
@@ -233,6 +240,7 @@ MessengerAPI.prototype.LeaveChatroom = async function (roomId) {
     // Print for debugging purpose
     logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/leave"}`);
 
+    // Send a HTTP request message
     const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/leave",
