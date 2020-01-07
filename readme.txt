@@ -30,19 +30,24 @@ You will then see a row for your new app with an AppKey item, which is your clie
     ```
     set https_proxy=http://<proxy.server>:<port>
     ```
-4. Please follow the steps to add Bot and setup a Chatroom in the Messenger Bot API Tutorials page.
-5. Open tutorial application source code with your editor and input the following parameters
+4. Open tutorial application source code with your editor and input the following parameters
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-6. Open a command prompt and folder *src* and run the tutorial application with the following command.
+    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+5. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node tutorial_chatbot.js
     ```
-7. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+6. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
     ```
-    $>node tutorial_chatbot.js
-    Get Token
+    Getting RDP Authentication Token
+    Successfully Authenticated
+    Send 1 to 1 message to <email>
+    Messenger BOT API: post a 1 to 1 message to <email> success
+    ```
+7. Then the application gets an associate Chatroom and joining to that Chatroom. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+    ```
     Get Rooms
     { chatrooms:
         [ { chatroomId: 'groupchat-dXXXXXXX',
@@ -52,8 +57,12 @@ You will then see a row for your new app with an AppKey item, which is your clie
     WebSocket Client Connected
     Received: {"reqId":"327344.6792","event":"connected"}
     ```
+8. Eikon Messenger supports tabular data, hyperlinks and a full set of emoji in the message. You can type ```/complex_message``` into a Chatroom to see an example.
+
+Note: You can enable the application debug log level via ```logger.level = 'info';``` application source code statement.The supported value is *'info'* and *'debug'* levels.
 
 ## Authors
+- Wasin Waeosri (wasin.waeosri@refinitiv.com)
 - Dino Diviacchi (dino.diviacchi@refinitiv.com)
 
 ## References
