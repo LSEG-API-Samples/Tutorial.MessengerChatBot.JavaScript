@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: November 2019
+- Last update: January 2020
 - Environment: Windows
 - Compiler: Node.js
 - Author: Dino Diviacchi (dino.diviacchi@refinitiv.com)
@@ -14,6 +14,7 @@ The [Messenger Bot API](https://developers.refinitiv.com/messenger-api) provides
 ## Table of contents
 * [Prerequisite](#prerequisite)
 * [Getting the AppKey value](#appkey)
+* [Setting the Messenger application](#setting)
 * [Running the Tutorial](#running)
 * [Authors](#author)
 * [References](#references)
@@ -29,7 +30,7 @@ Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacch
 
 ## <a id="appkey"></a>Getting the AppKey value
 
-Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a <a href="https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator">web site</a> (Please access with your Eikon account, *not your bot account*). 
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a [web site](https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator") (Please access with your Eikon account, *not your bot account*). 
 
 ![Figure-1](images/app_key_generator.png "AppKey Generator Tool") 
 
@@ -40,6 +41,30 @@ You can generate your AppKey via the following steps:
 
 You will then see a row for your new app with an AppKey item, which is your client_id for the Refinitiv Data Platform (RDP) Authentication. 
 
+## <a id="setting"></a>Setting the Messenger application
+
+Once you have setup your Eikon Messenger user and Bot user, you can add the Bot and create a Chatroom for you and your Bot via the following steps
+
+1. Login to your personal Eikon Messenger to add the bot to your contacts, using “Add a New Contact” from the menu in the lower left corner.
+
+    ![Figure-2](images/eikon_msg_addbot1.png "Add a New Contact") 
+
+2. Add bot name **bot_agent.mybot@refinitiv.com**.
+
+    ![Figure-3](images/eikon_msg_addbot2.png "Add Bot account") 
+
+3. Once you have add the bot it will show up under your contacts (on the left side).
+
+    ![Figure-4](images/eikon_msg_addbot3.png "Your Bot Account") 
+
+4. Create a chatroom using "Create a Bilateral chatroom" button from the menu in the lower left corner.
+
+    ![Figure-5](images/eikon_msg_addbot4.png "Create a chatroom") 
+
+5. Add your Bot to a chatroom by dragging it into your newly created chatroom. 
+
+    ![Figure-6](images/eikon_msg_addbot5.png "Bot Chatroom") 
+
 ## <a id="running"></a>Running the Tutorial
 1. Unzip or download the tutorial project folder into a directory of your choice 
 2. Run ```$> npm install``` command in the command prompt to install all the dependencies required to run the sample in a subdirectory called *node_modules/*.
@@ -47,39 +72,24 @@ You will then see a row for your new app with an AppKey item, which is your clie
     ```
     set https_proxy=http://<proxy.server>:<port>
     ```
-4. Login to your personal Eikon Messenger to add the bot to your contacts, using “Add a New Contact” from the menu in the lower left corner.
-
-    ![Figure-2](images/eikon_msg_addbot1.png "Add a New Contact") 
-
-5. Add bot name **bot_agent.mybot@refinitiv.com**.
-
-    ![Figure-3](images/eikon_msg_addbot2.png "Add Bot account") 
-
-6. Once you have add the bot it will show up under your contacts (on the left side).
-
-    ![Figure-4](images/eikon_msg_addbot3.png "Your Bot Account") 
-
-7. Create a chatroom using "Create a Bilateral chatroom" button from the menu in the lower left corner.
-
-    ![Figure-5](images/eikon_msg_addbot4.png "Create a chatroom") 
-
-8. Add your Bot to a chatroom by dragging it into your newly created chatroom. 
-
-    ![Figure-6](images/eikon_msg_addbot5.png "Bot Chatroom") 
-
-9. You will then be able to send messages to chatrooms using the API calls
-10. Open tutorial application source code with your editor and input the following parameters
+4. Open tutorial application source code with your editor and input the following parameters
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-11. Open a command prompt and folder *src* and run the tutorial application with the following command.
+    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+5. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node tutorial_chatbot.js
     ```
-12. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+6. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
     ```
-    $>node tutorial_chatbot.js
-    Get Token
+    Getting RDP Authentication Token
+    Successfully Authenticated
+    Send 1 to 1 message to <email>
+    Messenger BOT API: post a 1 to 1 message to <email> success
+    ```
+7. Then the application gets an associate Chatroom and joining to that Chatroom. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+    ```
     Get Rooms
     { chatrooms:
         [ { chatroomId: 'groupchat-dXXXXXXX',
@@ -89,8 +99,13 @@ You will then see a row for your new app with an AppKey item, which is your clie
     WebSocket Client Connected
     Received: {"reqId":"327344.6792","event":"connected"}
     ```
+8. Eikon Messenger supports tabular data, hyperlinks and a full set of emoji in the message. You can type ```/complex_message``` into a Chatroom to see an example.
+    ![Figure-7](images/eikon_msg_complex_msg.png "Complex message") 
+
+Note: You can enable the application debug log level via ```logger.level = 'info';``` application source code statement.The supported value is *'info'* and *'debug'* levels.
 
 ## <a id="author"></a>Authors
+- Wasin Waeosri (wasin.waeosri@refinitiv.com)
 - Dino Diviacchi (dino.diviacchi@refinitiv.com)
 
 ## <a id="references"></a>References

@@ -2,12 +2,14 @@
 //|            This source code is provided under the Apache 2.0 license      --
 //|  and is provided AS IS with no warranty or guarantee of fit for purpose.  --
 //|                See the project's LICENSE.md for details.                  --
-//|              Copyright Refinitiv 2019. All rights reserved.               --
+//|              Copyright Refinitiv 2020. All rights reserved.               --
 //|-----------------------------------------------------------------------------
 
 const request = require("request-promise");
 var WebSocketClient = require("websocket").client;
 const Timeout = ms => new Promise(res => setTimeout(res, ms));
+// winston logging module
+const winston = require('winston');
 
 // Global Default Variables
 var text = "";
@@ -17,53 +19,78 @@ const GWURL = "https://api.refinitiv.com";
 const apiBasePath = "/messenger/beta1";
 const content_type = "application/json";
 const RDPAuthenURL = "/auth/oauth2/v1/token";
-
-//Input your Messenger account AppKey.
-const APPKey = "XXXXXXXX";
-//Input your Bot Username
-const bot_username = "XXXXXXXX";
-//Input Bot Password
-const bot_password = "XXXXXXXX";
-var chatroomId = "";
-
 //Please verify below URL is correct via the WS lookup
 const WSURL = "wss://api.collab.refinitiv.com/services/nt/api/messenger/v1/stream";
+
+//Input your Bot Username
+const bot_username = "XXXXX";
+//Input Bot Password
+const bot_password = "XXXXX";
+//Input your Messenger account AppKey.
+const APPKey = "XXXXX";
+// Input your Eikon Messenger account email
+const recipient_email = "XXXXX";
+
+var chatroomId = "";
 var stsToken = null;
 
+//Create winston logger object
+let logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.simple(),
+    transports: [
+        new winston.transports.Console({
+            handleExceptions: true
+        })
+    ],
+    exitOnError: false
+});
 
+// Constuctor function
 var MessengerAPI = function (url, appid, wsURL) {
     this.access_token = "";
     this.refresh_token = "";
     this.appid = appid;
+    this.client_secret = "";
     this.client = request;
     this.wsClient = new WebSocketClient();
     this.authRefreshInterval = 1000 * 60;
     this.wsURL = wsURL;
-
-    this.test = function (username, password) {
-        console.log(username);
-        console.log(password);
-    }
 };
 
 //Send authentication request message to Refinitiv Data Platform (RDP) Authentication Gateway
 MessengerAPI.prototype.Authenticate = async function (username, password) {
 
-    let rsp = await this.client({
-        method: "POST",
-        url: GWURL + RDPAuthenURL,
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Authorization": "Basic"
-        },
-        form: {
+    let authen_request_msg = {};
+    if (this.refresh_token === '') {
+        authen_request_msg = {
             grant_type: "password",
             scope: "trapi.messenger",
             username: username,
             password: password,
             client_id: this.appid,
             takeExclusiveSignOnControl: "true"
+        }
+    } else {
+        authen_request_msg = {
+            grant_type: "refresh_token",
+            username: username,
+            refresh_token: this.refresh_token
+        }
+    }
+    // Print RDP authentication request message for debugging purpose
+    logger.debug(`Send POST:  ${JSON.stringify(authen_request_msg)} to ${GWURL + RDPAuthenURL}`);
+    const rsp = await this.client({
+        method: "POST",
+        url: GWURL + RDPAuthenURL,
+        headers: {
+            "Accept": "application/json",
+            "Authorization": "Basic"
+        },
+        form: authen_request_msg,
+        auth: {
+            username: this.appid,
+            password: this.client_secret,
         },
         resolveWithFullResponse: true
     }).catch(function (error) {
@@ -72,12 +99,11 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
 
     if (rsp.statusCode === 200) { //Status Code 200 "OK"
         let jRsp = JSON.parse(rsp.body);
-
+        // Print RDP authentication response message for debugging purpose
+        logger.debug(`Receive: Authen result = ${JSON.stringify(jRsp)}`);
         this.access_token = jRsp.access_token;
         this.refresh_token = jRsp.refresh_token;
         this.authRefreshInterval = (parseInt(jRsp.expires_in) - 30) * 1000; //Set up time to refreshed based on RDP expire_in value
-        this.username = username;
-        this.password = password;
         return this.access_token; // Return Access Token (STS_TOKEN)
     } else {
         console.error(`Authentication fail with HTTP status code: ${rsp.statusCode} ${rsp.body}`);
@@ -86,8 +112,14 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
 };
 
 //Send Message to a Chatroom via HTTP REST
-MessengerAPI.prototype.SendMessage = async function (recipientEmail, message) {
-    let rsp = await this.client({
+MessengerAPI.prototype.SendOnetoOneMessage = async function (recipientEmail, message) {
+    // Print HTTP request message for debugging purpose
+    logger.debug(`Send POST: ${JSON.stringify({
+        recipientEmail: recipientEmail,
+        message: message
+    })} to ${GWURL + apiBasePath + "/message"}`);
+
+    const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/message",
         headers: {
@@ -105,7 +137,7 @@ MessengerAPI.prototype.SendMessage = async function (recipientEmail, message) {
     });
 
     if (rsp.statusCode === 200) { //Status Code 200 "OK"
-        return JSON.parse(rsp.body);
+        console.log(`Messenger BOT API: post a 1 to 1 message to ${recipientEmail} success`);
     } else {
         console.error(`Send message to Chatroom fail with HTTP status code: ${rsp.statusCode} ${rsp.body}`);
         throw rsp.body;
@@ -115,7 +147,11 @@ MessengerAPI.prototype.SendMessage = async function (recipientEmail, message) {
 
 //Get List of Chatrooms Function via HTTP REST
 MessengerAPI.prototype.GetChatrooms = async function () {
-    let rsp = await this.client({
+
+    // Print for debugging purpose
+    logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms"}`);
+
+    const rsp = await this.client({
         method: "GET",
         url: GWURL + apiBasePath + "/chatrooms",
         headers: {
@@ -139,7 +175,10 @@ MessengerAPI.prototype.GetChatrooms = async function () {
 //Posting Messages to a Chatroom via HTTP REST
 MessengerAPI.prototype.PostToChatroom = async function (roomId, message) {
 
-    let rsp = await this.client({
+    // Print HTTP request message for debugging purpose
+    logger.debug(`Send POST: ${JSON.stringify({message: message})} to ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/post"}`);
+
+    const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/post",
         headers: {
@@ -164,7 +203,11 @@ MessengerAPI.prototype.PostToChatroom = async function (roomId, message) {
 
 //Joining a Bot to a Chatroom via HTTP REST
 MessengerAPI.prototype.JoinChatroom = async function (roomId) {
-    let rsp = await this.client({
+
+    // Print for debugging purpose
+    logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/join"}`);
+
+    const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/join",
         headers: {
@@ -186,7 +229,11 @@ MessengerAPI.prototype.JoinChatroom = async function (roomId) {
 
 //Leave a Chatroom
 MessengerAPI.prototype.LeaveChatroom = async function (roomId) {
-    let rsp = await this.client({
+
+    // Print for debugging purpose
+    logger.debug(`Send GET: ${GWURL + apiBasePath + "/chatrooms/" + roomId + "/leave"}`);
+
+    const rsp = await this.client({
         method: "POST",
         url: GWURL + apiBasePath + "/chatrooms/" + roomId + "/leave",
         headers: {
@@ -259,18 +306,12 @@ MessengerAPI.prototype.StartWS = async function () {
             if (msg.event === "chatroomPost") { //Receive message from a Chatroom
                 try {
                     text = msg.post.message;
-                    console.log(`receive text message: ${msg.post.message}`);
-                    if (text === "/help") {
+                    console.log(`Receive text message: ${msg.post.message}`);
+                    if (text === "/help" || text === "C1" || text === "C2" || text === "C3") {
                         await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
-                    }
-                    if (text === "C1") {
-                        await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
-                    }
-                    if (text === "C2") {
-                        await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
-                    }
-                    if (text === "C3") {
-                        await api.PostToChatroom(chatroomId, "What would you like help with?\n ")
+                    } else if (text === "/complex_message") {
+                        let complex_msg = "USD BBL EU AM Assessment at 11:30 UKT\nName\tAsmt\t10-Apr-19\tFair Value\t10-Apr-19\tHst Cls\nBRT Sw APR19\t70.58\t05:07\t(up) 71.04\t10:58\t70.58\nBRTSw MAY19\t70.13\t05:07\t(dn) 70.59\t10:58\t70.14\nBRT Sw JUN19\t69.75\t05:07\t(up)70.2\t10:58\t69.76";
+                        await api.PostToChatroom(chatroomId, complex_msg);
                     }
                 } catch (error) {
                     console.error(`Post message to Chatroom fail : ${error.toString()}`);
@@ -302,10 +343,15 @@ MessengerAPI.prototype.StartWS = async function () {
 
 
 //Call the async function to start authentication, open the swebsocket, get room id"s and join a room.
-var main = async function (api, username, password, wsURL) {
-    console.log("Get Token ");
+var main = async function (api, username, password, recipient_email) {
+    console.log("Getting RDP Authentication Token ");
     let rsp = await api.Authenticate(username, password);
     console.log("Successfully Authenticated ");
+
+    // Send 1 to 1 message to reipient without a chat room
+    console.log(`Send 1 to 1 message to ${recipient_email}`);
+    await api.SendOnetoOneMessage(recipient_email, "Hello from Node.js");
+
     console.log("Get Rooms ");
     let roomsRsp = await api.GetChatrooms();
     console.log(roomsRsp);
@@ -314,11 +360,14 @@ var main = async function (api, username, password, wsURL) {
     console.log("Join Rooms ");
     let val = await api.JoinChatroom(chatroomId);
 
-    await api.StartWS(wsURL);
+    //await api.StartWS(wsURL);
+    await api.StartWS();
 
 };
 
+//Setting Log level the supported value is 'info' and 'debug'
+logger.level = 'info';
 var api = new MessengerAPI(GWURL, APPKey, WSURL);
 
 //Running the tutorial 
-main(api, bot_username, bot_password).catch(rsp => console.log(rsp));
+main(api, bot_username, bot_password, recipient_email).catch(rsp => console.log(rsp));

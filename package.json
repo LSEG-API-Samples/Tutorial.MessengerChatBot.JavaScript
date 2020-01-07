@@ -15,6 +15,7 @@
   "dependencies": {
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
-    "websocket": "^1.0.31"
+    "websocket": "^1.0.31",
+    "winston": "^3.2.1"
   }
 }
