@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: November 2019
+- Last update: January 2020
 - Environment: Windows
 - Compiler: Node.js
 - Author: Dino Diviacchi (dino.diviacchi@refinitiv.com)
@@ -72,6 +72,7 @@ You will then see a row for your new app with an AppKey item, which is your clie
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
+    - ```recipient_email``` : Your assoicate Eikon messager email address 
 11. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node tutorial_chatbot.js
