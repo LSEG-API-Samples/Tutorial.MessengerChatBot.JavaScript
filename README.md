@@ -12,12 +12,24 @@
 The [Messenger Bot API](https://developers.refinitiv.com/messenger-api) provides a set of available API calls to build automated workflows or bots for Eikon Messenger. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically or interact with a bot via a WebSocket connection.
 
 ## Table of contents
+* [Overview](#overview)
 * [Prerequisite](#prerequisite)
 * [Getting the AppKey value](#appkey)
 * [Setting the Messenger application](#setting)
-* [Running the Tutorial](#running)
+* [Setting the environment for Demo application](#setting-env)
+* [Running the REST Demo](#running-rest)
+* [Running the WebSocket Demo](#running-ws)
+* [Running demo applications with debug log](#running-debug)
 * [Authors](#author)
 * [References](#references)
+
+## <a id="overview"></a>Messenger Bot API Demo overview
+
+This demo project shows how to implement the Messenger BOT API console applications with the REST and WebSocket APIs in JavaScript programming language and [Node.js](https://nodejs.org/en/) runtime environment. The applications makes an authentication with [RDP](https://developers.refinitiv.com/refinitiv-data-platform/refinitiv-data-platform-apis) Authentication service, then lets developers interact with Messeger Application/Chatroom on behalf of Bot via the REST and WebSocket APIs. 
+- *chatbot_demo_rest.js*: A REST API example that sends chat message to individual and a Chatroom. 
+- *chatbot_demo_ws.js*: A REST and WebSocket APIs example that sends and receives chat message with a Chatroom. 
+
+Note: Please note that the main concept for using Messager Bot REST and WebSocket APIs are the same for all technologies (see [Python example](https://github.com/Refinitiv-API-Samples/Example.MessengerChatBot.Python)). 
 
 ## <a id="prerequisite"></a>Prerequisite 
 This tutorial source code requires the following dependencies.
@@ -65,30 +77,66 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
 
     ![Figure-6](images/eikon_msg_addbot5.png "Bot Chatroom") 
 
-## <a id="running"></a>Running the Tutorial
+## <a id="setting-env"></a>Setting the environment for Demo application
 1. Unzip or download the tutorial project folder into a directory of your choice 
 2. Run ```$> npm install``` command in the command prompt to install all the dependencies required to run the sample in a subdirectory called *node_modules/*.
 3. If the machine is behind a proxy server, you need to configure Node.js uses proxy instead of a direct HTTP connection via the following command in command prompt: 
     ```
     set https_proxy=http://<proxy.server>:<port>
     ```
-4. Open tutorial application source code with your editor and input the following parameters
+
+## <a id="running-rest"></a>Running the REST Demo
+1. OOpen the *chatbot_demo_rest.js* demo application source code with your editor and input the following parameters
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
     - ```recipient_email``` : Your assoicate Eikon messenger email address 
-5. Open a command prompt and folder *src* and run the tutorial application with the following command.
+2. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
-    $>node tutorial_chatbot.js
+    $>node chatbot_demo_rest.js
     ```
-6. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
+3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
     ```
     Getting RDP Authentication Token
     Successfully Authenticated
     Send 1 to 1 message to <email>
     Messenger BOT API: post a 1 to 1 message to <email> success
     ```
-7. Then the application gets an associate Chatroom and joining to that Chatroom. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
+4. Then the application gets an associate Chatroom and joining to that Chatroom. 
+    ```
+    Get Rooms
+    { chatrooms:
+        [ { chatroomId: 'groupchat-dXXXXXXX',
+            name: 'CHATROOM_NAME',
+            createdTime: '2019-11-21T07:11:24Z' } ] }
+    Join Rooms
+    ```
+5. Once the demo application shows ```Join Rooms``` event, demo application will send a default ```Hello from JavaScript/Node.js``` message to a Chatroom on behalf of the Bot API before leaving a Chatroom.
+    ```
+    Join Rooms
+    sending message to groupchat-dXXXXXXX Rooms
+    Post message to Chatroom success
+    Leave Rooms
+    ```
+
+## <a id="running-ws"></a>Running the WebSocket Demo
+1. Open the *chatbot_demo_ws.js* demo application source code with your editor and input the following parameters
+    - ```APPKey```: Your AppKey
+    - ```bot_username```: Your Bot username
+    - ```bot_password```: Your Bot password
+    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+2. Open a command prompt and folder *src* and run the tutorial application with the following command.
+    ```
+    $>node tutorial_chatbot.js
+    ```
+3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
+    ```
+    Getting RDP Authentication Token
+    Successfully Authenticated
+    Send 1 to 1 message to <email>
+    Messenger BOT API: post a 1 to 1 message to <email> success
+    ```
+4. Then the application gets an associate Chatroom and joining to that Chatroom. Once the tutorial shows WebSocket ```connected``` event, you can start interact with your bot via a chatroom.
     ```
     Get Rooms
     { chatrooms:
@@ -99,10 +147,15 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     WebSocket Client Connected
     Received: {"reqId":"327344.6792","event":"connected"}
     ```
-8. Eikon Messenger supports tabular data, hyperlinks and a full set of emoji in the message. You can type ```/complex_message``` into a Chatroom to see an example.
-    ![Figure-7](images/eikon_msg_complex_msg.png "Complex message") 
+5. Now we should be able to receive a response from our chatbot. You can test by sending ```/help``` message in to a Chatroom to see an example.
+6. Eikon Messenger supports tabular data, hyperlinks and a full set of emoji in the message. You can type ```/complex_message``` into a Chatroom to see an example.
+    ![Figure-7](images/eikon_msg_complex_msg.png "Complex message")
 
-Note: You can enable the application debug log level via ```logger.level = 'info';``` application source code statement.The supported value is *'info'* and *'debug'* levels.
+
+## <a id="running-debug"></a>Running demo applications with debug log
+You can enable the REST and WebSocket application debug log level via ```logger.level = 'info';``` application source code statement.The supported values are *info* and *debug* levels.
+
+The *debug* level shows incoming and outgoing messages between the demo applications and Messenger BOT API REST and WebSocket servers.
 
 ## <a id="author"></a>Authors
 - Wasin Waeosri (wasin.waeosri@refinitiv.com)
