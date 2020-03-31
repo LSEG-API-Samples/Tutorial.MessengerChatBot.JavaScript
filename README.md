@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: January 2020
+- Last update: March 2020
 - Environment: Windows
 - Compiler: Node.js
 - Author: Dino Diviacchi (dino.diviacchi@refinitiv.com)
@@ -90,7 +90,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     ```
 
 ## <a id="running-quickstart"></a>Running the Quick Start Demo
-1. Open the *chatbot_demo_rest.js* demo application source code with your editor and input the following parameters
+1. Open the *chatbot_quickstart.js* demo application source code with your editor and input the following parameters
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
@@ -101,7 +101,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     ```
 
 ## <a id="running-rest"></a>Running the REST Demo
-1. Open the *chatbot_quickstart.js* demo application source code with your editor and input the following parameters
+1. Open the *chatbot_demo_rest.js* demo application source code with your editor and input the following parameters
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
@@ -142,7 +142,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```recipient_email``` : Your assoicate Eikon messenger email address 
 2. Open a command prompt in folder *src* and run the tutorial application with the following command.
     ```
-    $>node tutorial_chatbot.js
+    $>node chatbot_demo_ws.js
     ```
 3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
     ```
