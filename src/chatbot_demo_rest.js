@@ -114,7 +114,7 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
     }
 };
 
-//Send Message to a Chatroom via HTTP REST
+// Send Message to a recipient Email via HTTP REST
 MessengerAPI.prototype.SendOnetoOneMessage = async function (recipientEmail, message) {
     // Print HTTP request message for debugging purpose
     logger.debug(`Send POST: ${JSON.stringify({
