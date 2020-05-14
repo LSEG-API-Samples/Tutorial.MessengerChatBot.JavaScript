@@ -32,7 +32,8 @@ function createPostMessage(message, access_token) {
             recipientEmail: recipient_email,
             message: message
         },
-        json: true
+        json: true,
+        resolveWithFullResponse: true
     };
 }
 
@@ -47,20 +48,45 @@ var authRequest = {
         password: bot_password,
         client_id: APPKey,
         takeExclusiveSignOnControl: "true"
-    }
+    },
+    resolveWithFullResponse: true
 };
+
+
 
 // Main function
 async function send(message) {
     let response
     try {
-        response = await request(authRequest);
-        auth = JSON.parse(response);
-        //console.log("auth",auth);
-        response = await request(createPostMessage(message, auth.access_token));
+        // Authentication
+        console.log("Getting RDP Authentication Token ");
+        response = await request(authRequest).catch(function(error) {
+            return error.response;
+        });
 
+        
+        if (response.statusCode === 200) { //Status Code 200 "OK"
+            console.log("Successfully Authenticated ");
+        } else { // HTTP request message fail
+            console.error(`Authentication fail with HTTP status code: ${response.statusCode} ${response.body}`);
+            throw response.body;
+        }
+        auth = JSON.parse(response.body);
+        //console.log("auth",auth);
+        // Sending 1 to 1 message
+        response = await request(createPostMessage(message, auth.access_token)).catch(function (error) {
+            return error.response;
+        });
+
+        if (response.statusCode === 200) { //Status Code 200 "OK"
+            console.log(`Send 1 to 1 message "${message}" to ${recipient_email} success`);
+        }  else { // HTTP request message fail
+            console.error(`Send 1 to 1 message fail with HTTP status code: ${response.statusCode} ${response.body}`);
+            throw response.body;
+        }
+      
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 
