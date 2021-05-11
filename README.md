@@ -1,10 +1,11 @@
 # Messenger Bot API Tutorial
-- Last update: May 2020
+- Last update: May 2021
 - Environment: Windows
 - Compiler: Node.js
 - Prerequisite: [Access to Messenger application](#prerequisite)
 
 ## Introduction
+
 
 Refinitiv's [Messenger application](https://www.refinitiv.com/en/products/eikon-trading-software/eikon-messenger-securemessaging) is a free to use, compliant and secure messaging platform.  It is a powerful communication tool that provides desktop, mobile, and web access, and allows sharing messages, data, files, screenshots, and emoticons with your contacts.
 
@@ -177,8 +178,8 @@ The *debug* level shows incoming and outgoing messages between the demo applicat
 ## <a id="references"></a>References
 For further details, please check out the following resources:
 * [Refinitiv Messenger Bot API page](https://developers.refinitiv.com/messenger-api) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
-* [Refinitiv Messenger Bot API: Quick Start](https://developers.refinitiv.com/messenger-api/messenger-bot-api/quick-start). 
-* [Refinitiv Messenger Bot API: Documentation page](https://developers.refinitiv.com/messenger-api/messenger-bot-api/docs).
+* [Refinitiv Messenger Bot API: Quick Start](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api). 
+* [Refinitiv Messenger Bot API: Documentation page](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api/documentation).
 * [Node.js Documentation page](https://nodejs.org/dist/latest-v12.x/docs/api/).
 
 For any question related to the Messenger Bot API, please use the Developer Community [Q&A Forum](https://community.developers.refinitiv.com/spaces/303/index.html).
