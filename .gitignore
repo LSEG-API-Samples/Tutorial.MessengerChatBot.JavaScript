@@ -6,3 +6,4 @@ wasin_folder/
 review_note.txt
 node_modules/
 src/tutorial_chatbot_old.js
+**/node_modules
