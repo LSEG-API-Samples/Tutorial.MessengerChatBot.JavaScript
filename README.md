@@ -7,9 +7,9 @@
 ## Introduction
 
 
-Refinitiv's [Messenger application](https://www.refinitiv.com/en/products/eikon-trading-software/eikon-messenger-securemessaging) is a free to use, compliant and secure messaging platform.  It is a powerful communication tool that provides desktop, mobile, and web access, and allows sharing messages, data, files, screenshots, and emoticons with your contacts.
+Refinitiv's [Messenger application](https://www.refinitiv.com/en/products/refinitiv-messenger/)is a free to use, compliant and secure messaging platform.  It is a powerful communication tool that provides desktop, mobile, and web access, and allows sharing messages, data, files, screenshots, and emoticons with your contacts.
 
-The [Messenger Bot API](https://developers.refinitiv.com/messenger-api) provides a set of available API calls to build automated workflows or bots for the Messenger application. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically or interact with a bot via a WebSocket connection.
+The [Messenger Bot API](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api) provides a set of available API calls to build automated workflows or bots for the Messenger application. The Bot API allows your applications to connect with and pass information into Eikon’s Messenger service programmatically or interact with a bot via a WebSocket connection.
 
 ## Table of contents
 * [Overview](#overview)
@@ -26,7 +26,7 @@ The [Messenger Bot API](https://developers.refinitiv.com/messenger-api) provides
 
 ## <a id="overview"></a>Messenger Bot API Demo overview
 
-This demo project shows how to implement the Messenger BOT API console applications with the REST and WebSocket APIs in JavaScript programming language and [Node.js](https://nodejs.org/en/) runtime environment. The applications makes an authentication with [Refinitiv Data Platform (RDP)](https://developers.refinitiv.com/refinitiv-data-platform/refinitiv-data-platform-apis) Authentication service, then lets developers interact with Messeger Application/Chatroom on behalf of the Bot via the REST and WebSocket APIs. 
+This demo project shows how to implement the Messenger BOT API console applications with the REST and WebSocket APIs in JavaScript programming language and [Node.js](https://nodejs.org/en/) runtime environment. The applications makes an authentication with [Refinitiv Data Platform (RDP)](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis) Authentication service, then lets developers interact with Messeger Application/Chatroom on behalf of the Bot via the REST and WebSocket APIs. 
 
 This project contains the following example applications:
 - *chatbot_quickstart.js*: A REST API Quick Start example that sends chat message to recipient Email. 
@@ -45,7 +45,7 @@ Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacch
 
 ## <a id="appkey"></a>Getting the AppKey value
 
-Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator) or via a [web site](https://amers1.apps.cp.thomsonreuters.com/apps/AppkeyGenerator") (Please access with your Eikon account, *not your bot account*). 
+Once you have setup your Eikon Messenger user, please access the AppKey Generator Tool via Eikon Desktop/Refinitiv Workspace application (go to the Search Bar and type ```APP KEY```, then select the AppKey Generator). Please access with your Eikon account, *not your bot account*.
 
 You can generate your AppKey via the following steps:
 1. Enter an App Display Name
@@ -177,7 +177,7 @@ The *debug* level shows incoming and outgoing messages between the demo applicat
 
 ## <a id="references"></a>References
 For further details, please check out the following resources:
-* [Refinitiv Messenger Bot API page](https://developers.refinitiv.com/messenger-api) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
+* [Refinitiv Messenger Bot API page](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api) on the [Refinitiv Developer Community](https://developers.refinitiv.com/) web site.
 * [Refinitiv Messenger Bot API: Quick Start](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api). 
 * [Refinitiv Messenger Bot API: Documentation page](https://developers.refinitiv.com/en/api-catalog/messenger-api/messenger-bot-api/documentation).
 * [Node.js Documentation page](https://nodejs.org/dist/latest-v12.x/docs/api/).
