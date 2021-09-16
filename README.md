@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: May 2021
+- Last update: September 2021
 - Environment: Windows
 - Compiler: Node.js
 - Prerequisite: [Access to Messenger application](#prerequisite)
