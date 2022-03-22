@@ -1,11 +1,13 @@
 # Messenger Bot API Tutorial
-- Last update: September 2021
+- Last update: Mar 2022
 - Environment: Windows
 - Compiler: Node.js
 - Prerequisite: [Access to Messenger application](#prerequisite)
 
-## Introduction
+Example Code Disclaimer:
+ALL EXAMPLE CODE IS PROVIDED ON AN “AS IS” AND “AS AVAILABLE” BASIS FOR ILLUSTRATIVE PURPOSES ONLY. REFINITIV MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THE EXAMPLE CODE, OR THE INFORMATION, CONTENT, OR MATERIALS USED IN CONNECTION WITH THE EXAMPLE CODE. YOU EXPRESSLY AGREE THAT YOUR USE OF THE EXAMPLE CODE IS AT YOUR SOLE RISK.
 
+## Introduction
 
 Refinitiv's [Messenger application](https://www.refinitiv.com/en/products/refinitiv-messenger/) is a free to use, compliant and secure messaging platform.  It is a powerful communication tool that provides desktop, mobile, and web access, and allows sharing messages, data, files, screenshots, and emoticons with your contacts.
 
@@ -172,8 +174,7 @@ You can enable the REST and WebSocket demo applications debug log level via ```l
 The *debug* level shows incoming and outgoing messages between the demo applications and Messenger BOT API REST and WebSocket servers.
 
 ## <a id="author"></a>Authors
-- Wasin Waeosri (wasin.waeosri@refinitiv.com)
-- Dino Diviacchi (dino.diviacchi@refinitiv.com)
+- Dino Diviacchi (dino.diviacchi@lseg.com)
 
 ## <a id="references"></a>References
 For further details, please check out the following resources:

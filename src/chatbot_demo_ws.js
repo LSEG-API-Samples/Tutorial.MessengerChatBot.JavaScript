@@ -32,7 +32,6 @@ const APPKey = "---YOUR MESSENGER ACCOUNT APPKEY---";
 const recipient_email = "---YOUR MESSENGER ACCOUNT EMAIL---";
 
 
-
 var chatroomId = "";
 var stsToken = null;
 
