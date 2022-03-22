@@ -31,6 +31,7 @@ const APPKey = "---YOUR MESSENGER ACCOUNT APPKEY---";
 // Input your Eikon Messenger account email
 const recipient_email = "---YOUR MESSENGER ACCOUNT EMAIL---";
 
+
 var chatroomId = "";
 var stsToken = null;
 

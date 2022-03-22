@@ -28,7 +28,7 @@ The [Messenger Bot API](https://developers.refinitiv.com/en/api-catalog/messenge
 
 ## <a id="overview"></a>Messenger Bot API Demo overview
 
-This demo project shows how to implement the Messenger BOT API console applications with the REST and WebSocket APIs in JavaScript programming language and [Node.js](https://nodejs.org/en/) runtime environment. The applications makes an authentication with [Refinitiv Data Platform (RDP)](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis) Authentication service, then lets developers interact with Messeger Application/Chatroom on behalf of the Bot via the REST and WebSocket APIs. 
+This demo project shows how to implement the Messenger BOT API console applications with the REST and WebSocket APIs in JavaScript programming language and [Node.js](https://nodejs.org/en/) runtime environment. The applications makes an authentication with [Refinitiv Data Platform (RDP)](https://developers.refinitiv.com/en/api-catalog/refinitiv-data-platform/refinitiv-data-platform-apis) Authentication service, then lets developers interact with Messenger Application/Chatroom on behalf of the Bot via the REST and WebSocket APIs. 
 
 This project contains the following example applications:
 - *chatbot_quickstart.js*: A REST API Quick Start example that sends chat message to recipient Email. 
@@ -43,7 +43,7 @@ This tutorial source code requires the following dependencies.
 2. [Node.js](https://nodejs.org/en/) runtime.
 3. [npm](https://www.npmjs.com/) package manager (included in Node.js).
 
-Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacchi@refinitiv.com) to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
+Please contact your Refinitiv's representative and Dino Diviacchi (dino.diviacchi@lseg.com) to help you to access Eikon Message and Bot API. The Refinitiv team will then provision and set up the bot. Once this is done the email user you provided will receive an automated email with how to set up a password for the bot.
 
 ## <a id="appkey"></a>Getting the AppKey value
 
@@ -95,7 +95,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+    - ```recipient_email``` : Your associate Eikon messenger email address 
 2. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node chatbot_quickstart.js
@@ -106,12 +106,12 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+    - ```recipient_email``` : Your associate Eikon messenger email address 
 2. Open a command prompt in folder *src* and run the tutorial application with the following command.
     ```
     $>node chatbot_demo_rest.js
     ```
-3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
+3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your associate Eikon message email address. 
     ```
     Getting RDP Authentication Token
     Successfully Authenticated
@@ -140,12 +140,12 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```APPKey```: Your AppKey
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
-    - ```recipient_email``` : Your assoicate Eikon messenger email address 
+    - ```recipient_email``` : Your associate Eikon messenger email address 
 2. Open a command prompt in folder *src* and run the tutorial application with the following command.
     ```
     $>node chatbot_demo_ws.js
     ```
-3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your assoicate Eikon message email address. 
+3. The application then authenticates with [RDP](https://developers.refinitiv.com/refinitiv-data-platform) Authentication service and sends a 1-1 message to your associate Eikon message email address. 
     ```
     Getting RDP Authentication Token
     Successfully Authenticated
@@ -174,6 +174,7 @@ You can enable the REST and WebSocket demo applications debug log level via ```l
 The *debug* level shows incoming and outgoing messages between the demo applications and Messenger BOT API REST and WebSocket servers.
 
 ## <a id="author"></a>Authors
+- Refinitiv Developer Advocate (https://developers.refinitiv.com/en)
 - Dino Diviacchi (dino.diviacchi@lseg.com)
 
 ## <a id="references"></a>References
