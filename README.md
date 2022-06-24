@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: Mar 2022
+- Last update: June 2022
 - Environment: Windows
 - Compiler: Node.js
 - Prerequisite: [Access to Messenger application](#prerequisite)
@@ -36,6 +36,9 @@ This project contains the following example applications:
 - *chatbot_demo_ws.js*: A REST and WebSocket APIs example that sends and receives chat message with a Chatroom. 
 
 Note: Please note that the main concept for using Messager Bot REST and WebSocket APIs are the same for all technologies (see [Python example](https://github.com/Refinitiv-API-Samples/Example.MessengerChatBot.Python)). 
+
+**Caution**: 
+The current RDP APIs' expires_time is 600 seconds (10 minutes - **As of June 2022**). However, the Messenger Bot WebSocket API still uses 300 seconds (5 minutes), so the example applications are hard-coded to use expires_time with the value 300. 
 
 ## <a id="prerequisite"></a>Prerequisite 
 This tutorial source code requires the following dependencies.

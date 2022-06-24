@@ -107,6 +107,8 @@ MessengerAPI.prototype.Authenticate = async function (username, password) {
         logger.debug(`Receive: Authen result = ${JSON.stringify(jRsp)}`);
         this.access_token = jRsp.access_token;
         this.refresh_token = jRsp.refresh_token;
+        // The current RDP expires_time is 600 seconds (10 minutes). However, the Messenger Bot WebSocket server still uses 300 seconds (5 minutes).
+        jRsp.expires_in = "300"
         this.authRefreshInterval = (parseInt(jRsp.expires_in) - 30) * 1000; //Set up time to refreshed based on RDP expire_in value
         return this.access_token; // Return Access Token (STS_TOKEN)
     } else {
