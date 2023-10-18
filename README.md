@@ -1,5 +1,5 @@
 # Messenger Bot API Tutorial
-- Last update: June 2022
+- Last update: October 2023
 - Environment: Windows
 - Compiler: Node.js
 - Prerequisite: [Access to Messenger application](#prerequisite)
@@ -99,6 +99,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
     - ```recipient_email``` : Your associate Eikon messenger email address 
+    - ```chatroom_name```: Your chat room name
 2. Open a command prompt and folder *src* and run the tutorial application with the following command.
     ```
     $>node chatbot_quickstart.js
@@ -144,6 +145,7 @@ Once you have setup your Eikon Messenger user and Bot user, you can add the Bot 
     - ```bot_username```: Your Bot username
     - ```bot_password```: Your Bot password
     - ```recipient_email``` : Your associate Eikon messenger email address 
+    - ```chatroom_name```: Your chat room name
 2. Open a command prompt in folder *src* and run the tutorial application with the following command.
     ```
     $>node chatbot_demo_ws.js

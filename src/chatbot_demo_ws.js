@@ -30,6 +30,8 @@ const bot_password = "---YOUR BOT PASSWORD---";
 const APPKey = "---YOUR MESSENGER ACCOUNT APPKEY---";
 // Input your Eikon Messenger account email
 const recipient_email = "---YOUR MESSENGER ACCOUNT EMAIL---";
+// Input your Chatroom Name
+const chatroom_name = "---YOUR CHAT ROOM NAME---";
 
 
 var chatroomId = "";
@@ -376,7 +378,12 @@ var main = async function (api, username, password, recipient_email) {
     console.log("Get Rooms ");
     let roomsRsp = await api.GetChatrooms();
     console.log(roomsRsp);
-    chatroomId = roomsRsp["chatrooms"][0]["chatroomId"];
+    //chatroomId = roomsRsp["chatrooms"][0]["chatroomId"];
+    roomsRsp["chatrooms"].forEach((room) => {
+        if (room["name"] === chatroom_name) {
+            chatroomId = room.chatroomId;
+        }
+    });
 
     console.log("Join Rooms ");
     let val = await api.JoinChatroom(chatroomId);
